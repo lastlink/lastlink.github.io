@@ -7,7 +7,7 @@ pages:
     - echo deploying to $CI_PAGES_URL
   artifacts:
     paths:
-      - dist
+      - public
   cache:
     paths:
       - node_modules

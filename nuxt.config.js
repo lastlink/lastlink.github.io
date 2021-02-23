@@ -48,7 +48,8 @@ export default {
   generate: {
     routes: dynamicRoutes,
     fallback: true,
-    subFolders: false
+    subFolders: false,
+    dir: 'public'
   },
   /*
    ** Customize the progress-bar color
@@ -94,7 +95,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   },
   /*
    ** Custom additions configuration
