@@ -1,0 +1,25 @@
+image: node:12
+
+pages:
+  script:
+    - yarn install
+    - yarn build
+    - echo deploying to $CI_PAGES_URL
+  artifacts:
+    paths:
+      - public
+  cache:
+    paths:
+      - node_modules
+  only:
+    - master
+
+pages-test:
+  script:
+    - yarn install
+    - yarn build
+  cache:
+    paths:
+      - node_modules
+  only:
+    - merge_requests

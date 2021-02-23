@@ -7,7 +7,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "start:netlify": "netlify dev",
+    "start:netlifyProxy": "npx netlify-cms-proxy-server"
   },
   "repository": {
     "type": "git",
