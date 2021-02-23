@@ -49,8 +49,10 @@ export default {
     routes: dynamicRoutes,
     fallback: true,
     subFolders: false,
-    pathPrefix: 'PATHPREFIXTOREPLACE',
     dir: 'public'
+  },
+  router: {
+    base: 'PATHPREFIXTOREPLACE'
   },
   /*
    ** Customize the progress-bar color
