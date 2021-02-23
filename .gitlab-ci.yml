@@ -3,11 +3,11 @@ image: node:12
 pages:
   script:
     - yarn install
-    - yarn build
+    - yarn generate
     - echo deploying to $CI_PAGES_URL
   artifacts:
     paths:
-      - public
+      - dist
   cache:
     paths:
       - node_modules
@@ -17,7 +17,7 @@ pages:
 pages-test:
   script:
     - yarn install
-    - yarn build
+    - yarn generate
   cache:
     paths:
       - node_modules
