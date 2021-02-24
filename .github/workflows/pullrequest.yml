@@ -1,11 +1,9 @@
-name: Build and Deploy
+name: Pull_Request
 on:
-  # pull_request:
-  #   branches:
-  #     - master
-  push:
+  pull_request:
     branches:
       - master
+
 env:
   pathPrefix: ${{ secrets.PATHPREFIX }}
 
@@ -16,9 +14,6 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      # update pathPrefix in settings > secrets
-      # must be all caps
-      # need to escape /, e.g. PATHPREFIX = \/netlify-cms-nuxt
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           npm install
@@ -32,20 +27,3 @@ jobs:
         with:
           name: site
           path: public
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: site
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.0.0
-        with:
-          branch: master # The branch the action should deploy to.
-          folder: public # The folder the action should deploy.
-
