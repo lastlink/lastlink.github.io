@@ -4,6 +4,7 @@ pages:
   script:
     - yarn install
     - sed -i "s/\/\/base/base/g" nuxt.config.js
+    - sed -i "s/\/\/publicPath/publicPath/g" nuxt.config.js
     - sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
     - yarn generate
     - echo deploying to $CI_PAGES_URL
