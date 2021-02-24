@@ -28,7 +28,7 @@ pages-test:
     - cat nuxt.config.js
     - yarn generate
     - echo mv public$publicPrefix/_nuxt public/
-    # - mv public$publicPrefix/_nuxt public/
+    - mv public$publicPrefix/_nuxt public/
   cache:
     paths:
       - node_modules
