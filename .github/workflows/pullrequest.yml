@@ -17,11 +17,12 @@ jobs:
       - name: Install and Build
         run: |
           ls
-          npm install
           export pathPrefix=${{ env.pathPrefix }}
           sed -i "s/\/\/base/base/g" ./nuxt.config.js
+          echo sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
           sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" ./nuxt.config.js
           cat nuxt.config.js
+          npm install
           npm run generate
 
       - uses: actions/upload-artifact@v1

@@ -21,9 +21,9 @@ jobs:
       # need to escape /, e.g. PATHPREFIX = \/netlify-cms-nuxt
       - name: Install and Build
         run: |
+          ls
           export pathPrefix=${{ env.pathPrefix }}
           echo sed -i "s/\/\/base/base/g" nuxt.config.js
-          cat nuxt.config.js
           sed -i "s/\/\/base/base/g" nuxt.config.js
           echo sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
           sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
@@ -45,6 +45,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: site
+          path: public
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
