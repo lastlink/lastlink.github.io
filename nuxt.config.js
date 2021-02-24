@@ -73,7 +73,7 @@ export default {
     dir: 'public'
   },
   router: {
-    // base: 'PATHPREFIXTOREPLACE'
+    //base: 'PATHPREFIXTOREPLACE'
   },
   /*
    ** Customize the progress-bar color
