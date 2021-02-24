@@ -17,8 +17,8 @@ const dynamicRoutesContent = getDynamicPaths(
 )
 
 
-console.log("::: dynamic routes ::::")
-console.log(dynamicRoutesContent);
+// console.log("::: dynamic routes ::::")
+// console.log(dynamicRoutesContent);
 const dynamicRoutes = []
 const docs = [];
 dynamicRoutesContent.forEach(page => {
@@ -33,8 +33,8 @@ dynamicRoutesContent.forEach(page => {
   }
 });
 
-console.log("::: docs ::::")
-console.log(docs);
+// console.log("::: docs ::::")
+// console.log(docs);
 
 export default {
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
