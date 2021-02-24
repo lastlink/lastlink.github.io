@@ -1702,6 +1702,15 @@
     defu "^2.0.4"
     lodash.template "^4.5.0"
 
+"@nuxtjs/lunr-module@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/lunr-module/-/lunr-module-0.3.2.tgz#b542db3a80d6bddb1896a9c9006d420e8c65a9ca"
+  integrity sha512-4lL2pXb/qc46QZXbEloKZbcXfFLZRP4SjHTqXKHb5h1idRwujzks0ozJmdCs5frUjZJARGBKOU8NF7a1N5Ji/g==
+  dependencies:
+    consola "^2.15.0"
+    lunr "^2.3.9"
+    lunr-languages "^1.4.0"
+
 "@nuxtjs/markdownit-loader@^1.1.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/markdownit-loader/-/markdownit-loader-1.2.0.tgz#02e31b778bdbb61c13a5991021d660a21393b2c2"
@@ -8044,6 +8053,16 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lunr-languages@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/lunr-languages/-/lunr-languages-1.4.0.tgz#42abb12aa81447d1ece5aa35676adcdf40a3e8a8"
+  integrity sha512-YWfZDExJN/MJEVE/DbM4AuVRLsqeHi+q3wmECMsWjGIOkd5mr9DUNos7fv8f5do9VLRMYXIzFjn+N4+KPI9pQA==
+
+lunr@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
+  integrity sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==
 
 macos-release@^2.2.0:
   version "2.4.1"
