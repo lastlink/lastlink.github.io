@@ -10,13 +10,32 @@
       <li class="flex-1">
         <nuxt-link class="btn block" to="/projects">Projects</nuxt-link>
       </li>
+      <lunr-search>
+        <template v-slot:default="{ meta }">
+          <!-- {{ result }} -->
+          <!-- {{ meta.title }} -->
+          <!-- {{ meta }} -->
+          <!-- {{ meta.route }}
+          {{ meta.title }} -->
+          <nuxt-link :to="meta.route">
+            <!-- {{ result }} -->
+            {{ meta.title }}
+            <!-- {{ meta }} -->
+          </nuxt-link>
+        </template>
+      </lunr-search>
     </ul>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {
+    // Note: 'lunr-module' below is a custom webpack alias and
+    // does NOT refer to the folder in node_modules
+    LunrSearch: () => import('lunr-module/search'),
+  },
 }
 </script>
 

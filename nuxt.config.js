@@ -5,15 +5,36 @@ import postcssNesting from 'postcss-nesting'
 import postcssPresetEnv from 'postcss-preset-env'
 import * as SITE_INFO from './assets/content/site/info.json'
 import { COLOR_MODE_FALLBACK } from './utils/globals.js'
+import * as fs from "fs";
 
 const dynamicContentPath = 'assets/content' // ? No prepending/appending backslashes here
-const dynamicRoutes = getDynamicPaths(
+const dynamicRoutesContent = getDynamicPaths(
   {
     blog: 'blog/*.json',
     projects: 'projects/*.json'
   },
   dynamicContentPath
 )
+
+
+console.log("::: dynamic routes ::::")
+console.log(dynamicRoutesContent);
+const dynamicRoutes = []
+const docs = [];
+dynamicRoutesContent.forEach(page => {
+  if (page.route) {
+    dynamicRoutes.push(page.route)
+  }
+  if (page.content) {
+    const content = JSON.parse(JSON.stringify(page.content));
+    if (page.route)
+      content.route = page.route;
+    docs.push(content)
+  }
+});
+
+console.log("::: docs ::::")
+console.log(docs);
 
 export default {
   // ? The env Property: https://nuxtjs.org/api/configuration-env/
@@ -52,7 +73,7 @@ export default {
     dir: 'public'
   },
   router: {
-    base: 'PATHPREFIXTOREPLACE'
+    // base: 'PATHPREFIXTOREPLACE'
   },
   /*
    ** Customize the progress-bar color
@@ -69,13 +90,80 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa'],
+  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa',
+
+    // Simple usage
+    '@nuxtjs/lunr-module',
+
+    // With options
+    {
+      src: '@nuxtjs/lunr-module',
+      // These are the default options:
+
+      options: {
+        includeComponent: true,
+        globalComponent: false,
+        css: true,
+        defaultLanguage: 'en',
+        languages: false,
+        path: 'search-index',
+        ref: 'id',
+        fields: [
+          'title',
+          'description',
+          'body'
+        ]
+      }
+    }
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: ['@nuxtjs/markdownit', 'nuxt-purgecss'],
   markdownit: {
     injected: true
+  },
+  hooks: {
+    ready(nuxt) {
+      let documentIndex = 1
+
+      // this call is just for increasing coverage
+      // (the example is also just as test fixture)
+      nuxt.callHook('lunr:document')
+
+      // trigger 'not adding doc' warning to increase coverage
+      nuxt.callHook('lunr:document', {
+        document: true
+      })
+
+      for (const doc of docs) {
+
+        nuxt.callHook('lunr:document', {
+          locale: 'en',
+          // documentIndex === 1 ? 'en' : (documentIndex % 2 ? 'en' : 'af'),
+          document: {
+            id: documentIndex,
+            ...doc
+          },
+          /* !! WARNING: Do NOT copy this blindly !!
+          *
+          * When adding the full document as meta the json of your
+          * search index will become very large very quickly. Parsing that
+          * json on the client (especially mobile clients) could become a
+          * performance issue
+          *
+          * Normally you'd only need to include 'enough' meta info to properly
+          * recognise the document and to display your search results.
+          * E.g. The path and title of the page the document refers to, but
+          * _not_ the full text that was used for indexing
+          */
+          meta: doc
+        })
+        documentIndex++
+      }
+
+
+    }
   },
   /*
    ** Build configuration
@@ -157,7 +245,16 @@ function getDynamicPaths(urlFilepathTable, cwdPath) {
     ...Object.keys(urlFilepathTable).map(url => {
       const filepathGlob = urlFilepathTable[url]
       return glob.sync(filepathGlob, { cwd: cwdPath }).map(filepath => {
-        return `/${url}/${path.basename(filepath, '.json')}`
+        const relativePath = cwdPath + "/" + filepath;
+        console.log(relativePath);
+
+        const pageResult = JSON.parse(
+          fs.readFileSync(relativePath, "utf8")
+        );
+        let page = {}
+        page.route = `/${url}/${path.basename(filepath, '.json')}`
+        page.content = pageResult
+        return page;
       })
     })
   )

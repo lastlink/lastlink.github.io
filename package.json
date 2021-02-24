@@ -8,8 +8,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "start:netlify": "netlify dev",
-    "start:netlifyProxy": "npx netlify-cms-proxy-server"
+    "start:netlify": "netlify dev --port=8890",
+    "start:netlifyProxy": "npx netlify-cms-proxy-server --port=8082"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@nuxtjs/lunr-module": "^0.3.2",
     "@nuxtjs/markdownit": "^1.2.6",
     "nuxt": "^2.14.12"
   },
