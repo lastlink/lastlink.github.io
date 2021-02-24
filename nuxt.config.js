@@ -170,7 +170,7 @@ export default {
    */
   build: {
     extractCSS: true,
-    //publicPath: 'PATHPREFIXTOREPLACE/_nuxt'
+    // publicPath: 'PATHPREFIXTOREPLACE/_nuxt',
     postcss: {
       plugins: {
         'postcss-import': postcssImport,
