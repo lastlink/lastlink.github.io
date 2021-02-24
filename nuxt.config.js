@@ -33,7 +33,7 @@ dynamicRoutesContent.forEach(page => {
   }
 });
 
-console.log(dynamicRoutes);
+console.log("::: docs ::::")
 console.log(docs);
 
 export default {
@@ -99,7 +99,7 @@ export default {
     {
       src: '@nuxtjs/lunr-module',
       // These are the default options:
-      /*
+
       options: {
         includeComponent: true,
         globalComponent: false,
@@ -110,9 +110,10 @@ export default {
         ref: 'id',
         fields: [
           'title',
+          'description',
           'body'
         ]
-      } */
+      }
     }
   ],
   /*
