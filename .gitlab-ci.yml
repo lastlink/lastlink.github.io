@@ -25,8 +25,10 @@ pages-test:
     - sed -i "s/\/\/base/base/g" nuxt.config.js
     - sed -i "s/\/\/publicPath/publicPath/g" nuxt.config.js
     - sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
+    - cat nuxt.config.js
     - yarn generate
-    - mv public$publicPrefix/_nuxt public/
+    - echo mv public$publicPrefix/_nuxt public/
+    # - mv public$publicPrefix/_nuxt public/
   cache:
     paths:
       - node_modules
