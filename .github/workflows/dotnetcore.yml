@@ -18,7 +18,7 @@ jobs:
 
       # update pathPrefix in settings > secrets
       # must be all caps
-      # need to escape /, e.g. PATHPREFIX = \/netlify-cms-nuxt
+      # need to escape /, e.g. PATHPREFIX = \\/netlify-cms-nuxt
       - name: Install and Build
         run: |
           ls
