@@ -7,7 +7,7 @@ pages:
     - sed -i "s/\/\/publicPath/publicPath/g" nuxt.config.js
     - sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
     - yarn generate
-    - mv public$pathPrefix/_nuxt public/
+    - mv public$publicPrefix/_nuxt public/
     - echo deploying to $CI_PAGES_URL
   artifacts:
     paths:
@@ -26,7 +26,7 @@ pages-test:
     - sed -i "s/\/\/publicPath/publicPath/g" nuxt.config.js
     - sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
     - yarn generate
-    - mv public$pathPrefix/_nuxt public/
+    - mv public$publicPrefix/_nuxt public/
   cache:
     paths:
       - node_modules
