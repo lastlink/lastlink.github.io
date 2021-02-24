@@ -26,6 +26,8 @@ dynamicRoutesContent.forEach(page => {
     dynamicRoutes.push(page.route)
   }
   if (page.content) {
+    // if (page.route)
+    //   page.content.route = page.route;
     docs.push(page.content)
   }
 });
@@ -134,7 +136,8 @@ export default {
       for (const doc of docs) {
 
         nuxt.callHook('lunr:document', {
-          locale: documentIndex === 1 ? 'fr' : (documentIndex % 2 ? 'en' : 'af'),
+          locale: 'en',
+          // documentIndex === 1 ? 'en' : (documentIndex % 2 ? 'en' : 'af'),
           document: {
             id: documentIndex,
             ...doc
