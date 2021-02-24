@@ -26,13 +26,15 @@ dynamicRoutesContent.forEach(page => {
     dynamicRoutes.push(page.route)
   }
   if (page.content) {
-    // if (page.route)
-    //   page.content.route = page.route;
-    docs.push(page.content)
+    const content = JSON.parse(JSON.stringify(page.content));
+    if (page.route)
+      content.route = page.route;
+    docs.push(content)
   }
 });
 
 console.log(dynamicRoutes);
+console.log(docs);
 
 export default {
   // ? The env Property: https://nuxtjs.org/api/configuration-env/

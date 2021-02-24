@@ -12,8 +12,15 @@
       </li>
       <lunr-search>
         <template v-slot:default="{ meta }">
-          <nuxt-link :to="meta.href">
+          <!-- {{ result }} -->
+          <!-- {{ meta.title }} -->
+          <!-- {{ meta }} -->
+          <!-- {{ meta.route }}
+          {{ meta.title }} -->
+          <nuxt-link :to="meta.route">
+            <!-- {{ result }} -->
             {{ meta.title }}
+            <!-- {{ meta }} -->
           </nuxt-link>
         </template>
       </lunr-search>
