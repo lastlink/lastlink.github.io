@@ -23,7 +23,10 @@ jobs:
         run: |
           npm install
           export pathPrefix=${{ env.pathPrefix }}
+          echo sed -i "s/\/\/base/base/g" nuxt.config.js
+          cat nuxt.config.js
           sed -i "s/\/\/base/base/g" nuxt.config.js
+          echo sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
           sed -i "s/PATHPREFIXTOREPLACE/$pathPrefix/g" nuxt.config.js
           cat nuxt.config.js
           npm run generate
